@@ -106,11 +106,11 @@ ul
 <p><span style='font-size:10.0pt'>This describes my original design dual
 channel quantizer inspired by </span><a
 href="http://www.mindspring.com/~clist/resource/circuits/cv_quant.html"><span
-style='font-size:10.0pt'>Chris List’s ARP Style CV Quantizer</span></a><span
+style='font-size:10.0pt'>Chris List&apos;s ARP Style CV Quantizer</span></a><span
 style='font-size:10.0pt'> design. My new implementation is an intelligent
 design that exploits the programmability of a Microchip PIC16F84. It will
-quantize voltages in 1/12 volt (semitone) or 1 volt (octave) steps from –10V to
-10V. Quantization time is about 2ms per channel. Octave switches allow the user
+quantize voltages in 1/12 volt (semitone) or 1 volt (octave) steps from -10V to
++10V. Quantization time is about 2ms per channel. Octave switches allow the user
 to select between semitone or octave quantization. <o:p></o:p></span></p>
 
 <p><span style='font-size:10.0pt'>On a per channel basis, this design uses a
@@ -312,7 +312,7 @@ for the installation of the calibration jumpers:<o:p></o:p></span></p>
      JP1<o:p></o:p></span></li>
  <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
      mso-list:l0 level1 lfo1;tab-stops:list .5in'><span style='font-size:10.0pt'>Adjust
-     Zero (VR2) for –10.000V at OUT2<o:p></o:p></span></li>
+     Zero (VR2) for -10.000V at OUT2<o:p></o:p></span></li>
  <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
      mso-list:l0 level1 lfo1;tab-stops:list .5in'><span style='font-size:10.0pt'>Remove
      JP1<o:p></o:p></span></li>
@@ -327,13 +327,12 @@ for the installation of the calibration jumpers:<o:p></o:p></span></p>
      JP1 and JP2<o:p></o:p></span></li>
 </ol>
 
-<p><span style='font-size:10.0pt'>The zero voltage is defined as –10.000V out
-when the input is at –10.000V. The output voltages should be calibrated to the
+<p><span style='font-size:10.0pt'>The zero voltage is defined as -10.000V out
+when the input is at -10.000V. The output voltages should be calibrated to the
 target voltages as closely as possible for accuracy. I believe that an average
 person can discern pitch errors of 10 cents or more (100 cents in a semitone).
-This translates to a calibration voltage accuracy of </span><span
-style='font-size:10.0pt;font-family:Symbol'>±</span><span style='font-size:
-10.0pt'> 4.2mV so your voltmeter will need to be at least this accurate. Some
+This translates to a calibration voltage accuracy of
++/- 4.2mV so your voltmeter will need to be at least this accurate. Some
 people with better pitch hearing might require more accurate calibrations.<o:p></o:p></span></p>
 
 <p><b>Software:<o:p></o:p></b></p>
@@ -367,7 +366,7 @@ implemented in software. The possibilities are potentially limitless.<o:p></o:p>
 
 <p><span style='font-size:10.0pt'>The </span><a
 href="http://www.doepfer.de/a156.htm"><span style='font-size:10.0pt'>Doepfer
-A-156 Dual Quantizer</span></a><span style='font-size:10.0pt'> extends its’
+A-156 Dual Quantizer</span></a><span style='font-size:10.0pt'> extends its&apos;
 usefulness by including a sample trigger input. I believe that when the jack
 has a plug inserted, a conversion cycle is initiated by the edge of a digital
 signal. I considered this feature on my quantizer but decided that this feature
@@ -384,8 +383,8 @@ hardware could be simple and static.<o:p></o:p></span></p>
 
 <p><b>Pictures:<o:p></o:p></b></p>
 
-<p><span style='font-size:10.0pt'>I’m sorry there are no pictures because I
-don’t have a digital camera. If I can borrow one, I will add pictures. Click </span><a
+<p><span style='font-size:10.0pt'>I&apos;m sorry there are no pictures because I
+don&apos;t have a digital camera. If I can borrow one, I will add pictures. Click </span><a
 href="QuantizerFrontPanel.gif"><span style='font-size:10.0pt'>here</span></a><span
 style='font-size:10.0pt'> for a diagram of my front panel.<o:p></o:p></span></p>
 
