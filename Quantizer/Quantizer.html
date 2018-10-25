@@ -1,0 +1,406 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:st1="urn:schemas-microsoft-com:office:smarttags"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="Quantizer_files/filelist.xml">
+<title>Dual Quantizer</title>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="place"/>
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]--><!--[if !mso]><object
+ classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui></object>
+<style>
+st1\:*{behavior:url(#ieooui) }
+</style>
+<![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:1560552328;
+	mso-list-template-ids:-985083740;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]-->
+<meta name=Template content="C:\PROGRAM FILES\MICROSOFT OFFICE\OFFICE\html.dot">
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p><b><span style='font-size:18.0pt'>MOTM Compatible Dual Channel Quantizer<o:p></o:p></span></b></p>
+
+<p><span style='font-size:10.0pt'>By John J Speth - 3/30/2005<o:p></o:p></span></p>
+
+<p><b>Introduction:<o:p></o:p></b></p>
+
+<p><span style='font-size:10.0pt'>This describes my original design dual
+channel quantizer inspired by </span><a
+href="http://www.mindspring.com/~clist/resource/circuits/cv_quant.html"><span
+style='font-size:10.0pt'>Chris List’s ARP Style CV Quantizer</span></a><span
+style='font-size:10.0pt'> design. My new implementation is an intelligent
+design that exploits the programmability of a Microchip PIC16F84. It will
+quantize voltages in 1/12 volt (semitone) or 1 volt (octave) steps from –10V to
+10V. Quantization time is about 2ms per channel. Octave switches allow the user
+to select between semitone or octave quantization. <o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt'>On a per channel basis, this design uses a
+digital-to-analog converter (DAC), a comparator, and a sample/hold to
+continuously quantize an analog signal. A suitably programmed PIC drives the
+quantization process. The addition of a second comparator and sample/hold is
+all that is needed to get a second channel. Even more channels can be added at
+the expense of PIC pins and conversion interval per channel. The DAC is
+multiplexed among all channels.<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt'>The design was built to the MOTM format using
+the MOTM-000-A1 DIY breadboard with power cable and mounting bracket from </span><a
+href="http://www.synthtech.com/"><span style='font-size:10.0pt'>Synthesis
+Technology</span></a><span style='font-size:10.0pt'>. I also purchased the
+MOTM-1UB blank 1U panel for the front panel. Other parts were obtained from my
+own personal stock, </span><a href="http://www.mouser.com/"><span
+style='font-size:10.0pt'>Mouser</span></a><span style='font-size:10.0pt'>, and </span><a
+href="http://www.digikey.com/"><span style='font-size:10.0pt'>Digikey</span></a><span
+style='font-size:10.0pt'>.<o:p></o:p></span></p>
+
+<p><b>Design Discussion:<o:p></o:p></b></p>
+
+<p><span style='font-size:10.0pt'>See the </span><a
+href="QuantizerSchematic.gif"><span style='font-size:10.0pt'>schematic</span></a><span
+style='font-size:10.0pt'> and </span><a href="quant.zip"><span style='font-size:
+10.0pt'>source code</span></a> <span style='font-size:10.0pt'>to follow the
+design discussion. The circuit engine is a Microchip PIC16F84 microcontroller
+(U1) clocked at 10MHz and an MP7542 12 bit DAC (U2). Op amp U3B converts the
+current output of the DAC to a voltage output. Op amp U3A allows the trimming
+of the zero voltage point and control voltage scale. The components used around
+U3A were selected to achieve standard 1V/octave CV scaling. Channel 1
+sample/hold is built around U4A, C18, and U5A. Channel 2 sample/hold is built
+around U4B, C19, and U5B. Resistor R5 provides some slew limiting to keep down
+noise. Channel 1 comparator is U8. Channel 2 comparator is U9. The 100</span><span
+style='font-size:10.0pt;font-family:Symbol'>W</span><span style='font-size:
+10.0pt'> and 180K</span><span style='font-size:10.0pt;font-family:Symbol'>W</span><span
+style='font-size:10.0pt'> resistors around the comparators provide about 8mv of
+hystersis to reduce comparator chatter due to noise. The PIC and DAC are
+powered by 5V. This voltage is supplied by U6. The DAC and zero/scaling
+circuits require a clean 12V reference. This voltage is supplied by U7. Diode
+D1 limits the maximum voltage at the PIC input RA4 to 5V. The internal
+protection diode limits the maximum voltage at the PIC input RB3 to 5V.
+Resistors R9 and R13 limit the current through internal and external limiting
+diodes. Resistors R8 and R12 provide pull-up voltage to the open collector
+outputs of the comparators.<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt'>The design is a two channel design in which
+both channels CVs are quantized repeatedly and in order. A complete dual
+channel quantization cycle begins with the PIC executing an 8 bit binary search
+cycle to find the digital value of the control voltage, CV1, at the channel 1
+comparator. This is essentially a digital to analog conversion process. The
+channel 1 sample/hold is set to hold during the search cycle. When the search
+cycle is complete, the channel 1 sample/hold is set to sample the DAC output
+for a brief time to allow the hold capacitor to charge. After the sample time,
+the PIC executes a quantization cycle on channel 2 similar to that of channel
+1.<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt'>A 12 bit DAC was chosen to achieve the
+accuracy needed for VCO control voltages. Only the 8 most significant bits are
+used. Doing this, 12 bit accuracy is achieved in an 8 bit application. The
+MP7542 was selected because I have many on hand. Any comparable 12 bit (or
+better) DAC can be used with the appropriate software changes.<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt'>The design also uses an octave switch to use
+octave (MOD12) quantization for control voltages. Closing the octave switch for
+a given channel selects octave quantization otherwise semitone quantization is
+used. This is a simple math function performed in software. This would suggest
+that any quantization scales could be implemented with the appropriate software
+changes. This is exactly what the </span><a
+href="http://www.doepfer.de/a156.htm"><span style='font-size:10.0pt'>Doepfer
+A-156 Dual Quantizer</span></a><span style='font-size:10.0pt'> does.<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt'>The PIC is clocked at the maximum rate of 10MHz
+for the part I used. It may be clocked at lower frequencies but software
+changes may be needed so as not to adversely affect the conversion interval per
+channel. The DAC is loaded in about 6</span><span style='font-size:10.0pt;
+font-family:Symbol'>m</span><span style='font-size:10.0pt'>s at 10MHz. The DAC
+requires a 40</span><span style='font-size:10.0pt;font-family:Symbol'>m</span><span
+style='font-size:10.0pt'>s settling period after loading the output register.
+This time is consumed in the PIC software in a timed loop that does nothing.
+The sample time is set to 1ms. This time is also consumed in the PIC software
+in a timed loop that does nothing. The sample time consumes most of the conversion
+cycle time.<o:p></o:p></span></p>
+
+<p><b>Construction:<o:p></o:p></b></p>
+
+<p><span style='font-size:10.0pt'>There were no unusual construction
+circumstances. As usual, digital and analog grounds should be kept separate.
+Digital circuitry should be located as far from analog circuitry as possible.
+Sample/hold layout should be kept as tight as possible. All IC power pins
+should be bypassed by .1</span><span style='font-size:10.0pt;font-family:Symbol'>m</span><span
+style='font-size:10.0pt'> F capacitors.<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt'>All ICs used are DIP packaged with the
+exception of the voltage regulators. The voltage regulators are packaged in the
+TO-92 low power type packages. The PIC can be reprogrammed and, therefore, is
+socketed using a high quality 18 pin DIP socket with gold plated contacts. The
+DAC is socketed in case I want to hand select the DAC for accuracy. All other
+components are soldered directly to the board. All resistors are 1/8W 1% metal
+film. All 1% resistors were chosen to make parts ordering simpler. Resistors
+R1, R2, and R3 are required to be 1% tolerance. All other resistors may be 5%
+or 10% parts. Bypass capacitors are .1</span><span style='font-size:10.0pt;
+font-family:Symbol'>m</span><span style='font-size:10.0pt'> F ceramic disc. The
+sample/hold capacitors are 1000pF polystyrene which is critical for droop free
+and accurate output. Potentiometers VR1 and VR2 are linear taper trimmers
+mounted on the board. Octave switches S1 and S2 are mounted on the panel. Jacks
+J1 through J4 are also mounted on the panel.<o:p></o:p></span></p>
+
+<p><b>Calibration:<o:p></o:p></b></p>
+
+<p><span style='font-size:10.0pt'>The quantizer must be calibrated to the
+proper zero voltage and scale. Calibration only happens at power up. If any
+jumpers are installed at power up, the quantizer goes into a calibration mode
+in which one of three selected voltages is output to one or both of the CV
+outputs. If, at any time, both jumpers are removed, the quantizer will go into
+normal usage mode. <b>CAUTION: INSTALLING A CALIBRATION JUMPER WHEN THE
+QUANTIZER IS IN <st1:place w:st="on">NORMAL</st1:place> MODE COULD DAMAGE THE
+PIC</b><i>.</i> Never install a jumper with power on if no jumper is installed.
+The jumpers can be &quot;stored&quot; after calibration by &quot;half
+installing&quot; them to one pin.<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt'>The following table shows the output voltages
+for the installation of the calibration jumpers:<o:p></o:p></span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=1 cellpadding=0 width=272
+ style='width:204.0pt;mso-cellspacing:.7pt;mso-padding-alt:5.25pt 5.25pt 5.25pt 5.25pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td width="15%" valign=top style='width:15.0%;padding:5.25pt 5.25pt 5.25pt 5.25pt'>
+  <p><b><span style='font-size:10.0pt'>JP1</span></b></p>
+  </td>
+  <td width="15%" valign=top style='width:15.0%;padding:5.25pt 5.25pt 5.25pt 5.25pt'>
+  <p><b><span style='font-size:10.0pt'>JP2</span></b></p>
+  </td>
+  <td width="28%" valign=top style='width:28.0%;padding:5.25pt 5.25pt 5.25pt 5.25pt'>
+  <p><b><span style='font-size:10.0pt'>Voltage</span></b></p>
+  </td>
+  <td width="42%" valign=top style='width:42.0%;padding:5.25pt 5.25pt 5.25pt 5.25pt'>
+  <p><b><span style='font-size:10.0pt'>Output</span></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td width="15%" valign=top style='width:15.0%;padding:5.25pt 5.25pt 5.25pt 5.25pt'>
+  <p><span style='font-size:10.0pt'>In</span></p>
+  </td>
+  <td width="15%" valign=top style='width:15.0%;padding:5.25pt 5.25pt 5.25pt 5.25pt'>
+  <p><span style='font-size:10.0pt'>In</span></p>
+  </td>
+  <td width="28%" valign=top style='width:28.0%;padding:5.25pt 5.25pt 5.25pt 5.25pt'>
+  <p><span style='font-size:10.0pt'>-10.000V</span></p>
+  </td>
+  <td width="42%" valign=top style='width:42.0%;padding:5.25pt 5.25pt 5.25pt 5.25pt'>
+  <p><span style='font-size:10.0pt'>OUT1 and OUT2</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td width="15%" valign=top style='width:15.0%;padding:5.25pt 5.25pt 5.25pt 5.25pt'>
+  <p><span style='font-size:10.0pt'>Out</span></p>
+  </td>
+  <td width="15%" valign=top style='width:15.0%;padding:5.25pt 5.25pt 5.25pt 5.25pt'>
+  <p><span style='font-size:10.0pt'>In</span></p>
+  </td>
+  <td width="28%" valign=top style='width:28.0%;padding:5.25pt 5.25pt 5.25pt 5.25pt'>
+  <p><span style='font-size:10.0pt'>0.000V</span></p>
+  </td>
+  <td width="42%" valign=top style='width:42.0%;padding:5.25pt 5.25pt 5.25pt 5.25pt'>
+  <p><span style='font-size:10.0pt'>OUT2</span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;mso-yfti-lastrow:yes'>
+  <td width="15%" valign=top style='width:15.0%;padding:5.25pt 5.25pt 5.25pt 5.25pt'>
+  <p><span style='font-size:10.0pt'>In</span></p>
+  </td>
+  <td width="15%" valign=top style='width:15.0%;padding:5.25pt 5.25pt 5.25pt 5.25pt'>
+  <p><span style='font-size:10.0pt'>Out</span></p>
+  </td>
+  <td width="28%" valign=top style='width:28.0%;padding:5.25pt 5.25pt 5.25pt 5.25pt'>
+  <p><span style='font-size:10.0pt'>+10.000V</span></p>
+  </td>
+  <td width="42%" valign=top style='width:42.0%;padding:5.25pt 5.25pt 5.25pt 5.25pt'>
+  <p><span style='font-size:10.0pt'>OUT1</span></p>
+  </td>
+ </tr>
+</table>
+
+<p><span style='font-size:10.0pt'>Here is the calibration procedure:<o:p></o:p></span></p>
+
+<ol start=1 type=1>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo1;tab-stops:list .5in'><span style='font-size:10.0pt'>Power
+     off the quantizer<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo1;tab-stops:list .5in'><span style='font-size:10.0pt'>Install
+     JP2<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo1;tab-stops:list .5in'><span style='font-size:10.0pt'>Power
+     on<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo1;tab-stops:list .5in'><span style='font-size:10.0pt'>Install
+     JP1<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo1;tab-stops:list .5in'><span style='font-size:10.0pt'>Adjust
+     Zero (VR2) for –10.000V at OUT2<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo1;tab-stops:list .5in'><span style='font-size:10.0pt'>Remove
+     JP1<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo1;tab-stops:list .5in'><span style='font-size:10.0pt'>Adjust
+     Scale (VR1) for 0.000 at OUT2<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo1;tab-stops:list .5in'><span style='font-size:10.0pt'>Repeat
+     steps 4 thru 7 until VR1 and VR2 no longer need adjustment<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l0 level1 lfo1;tab-stops:list .5in'><span style='font-size:10.0pt'>Remove
+     JP1 and JP2<o:p></o:p></span></li>
+</ol>
+
+<p><span style='font-size:10.0pt'>The zero voltage is defined as –10.000V out
+when the input is at –10.000V. The output voltages should be calibrated to the
+target voltages as closely as possible for accuracy. I believe that an average
+person can discern pitch errors of 10 cents or more (100 cents in a semitone).
+This translates to a calibration voltage accuracy of </span><span
+style='font-size:10.0pt;font-family:Symbol'>±</span><span style='font-size:
+10.0pt'> 4.2mV so your voltmeter will need to be at least this accurate. Some
+people with better pitch hearing might require more accurate calibrations.<o:p></o:p></span></p>
+
+<p><b>Software:<o:p></o:p></b></p>
+
+<p><span style='font-size:10.0pt'>The PIC must be programmed before use. Click </span><a
+href="quant.zip"><span style='font-size:10.0pt'>here</span></a><span
+style='font-size:10.0pt'> for the hex code. The hex code may be programmed into
+the PIC using any appropriate PIC programmer. <o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt'>The hex code was built using the </span><a
+href="http://www.bknd.com/cc5x/index.shtml"><span style='font-size:10.0pt'>CC5X
+C Compiler</span></a><span style='font-size:10.0pt'> from B Knudsen Data. The
+free edition of CC5X is perfectly suitable for compiling the source code. Click
+</span><a href="quant.zip"><span style='font-size:10.0pt'>here</span></a><span
+style='font-size:10.0pt'> for the complete archive of the source code. The
+source code is written entirely in C.<o:p></o:p></span></p>
+
+<p><b>Suggestions for Future Designs:<o:p></o:p></b></p>
+
+<p><span style='font-size:10.0pt'>The quantizer was built mostly from parts I
+had on hand. This is how I chose the MP7542 DAC. I believe a better choice
+would be the MAX551 from Maxim/Dallas. This part is essentially an MP7542 with
+a serial data interface. It has better performance specs too. The serial
+interface frees up microcontroller pins for other uses and makes construction
+cleaner due to the fewer number of data interface lines between the PIC and the
+DAC. Using the MAX551 will free up more pins for additional channels at the
+expense of conversion time.<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt'>Additional quantization scales may be
+implemented in software. The possibilities are potentially limitless.<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt'>The </span><a
+href="http://www.doepfer.de/a156.htm"><span style='font-size:10.0pt'>Doepfer
+A-156 Dual Quantizer</span></a><span style='font-size:10.0pt'> extends its’
+usefulness by including a sample trigger input. I believe that when the jack
+has a plug inserted, a conversion cycle is initiated by the edge of a digital
+signal. I considered this feature on my quantizer but decided that this feature
+is more appropriate for an outboard sample/hold. However, it is possible with
+the appropriate simple hardware and software changes. <o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt'>The PIC16F84 is an old die-hard chip for
+flash programmable microcontrollers. Microchip has come out with many
+alternative flash programmable microcontrollers in recent years. Any of the
+PIC16F87X microcontrollers would give additional pins and higher possible clock
+speeds that would enable feature rich designs based on my design presented
+here. The feature set relies heavily on microcontroller software whereas the
+hardware could be simple and static.<o:p></o:p></span></p>
+
+<p><b>Pictures:<o:p></o:p></b></p>
+
+<p><span style='font-size:10.0pt'>I’m sorry there are no pictures because I
+don’t have a digital camera. If I can borrow one, I will add pictures. Click </span><a
+href="QuantizerFrontPanel.gif"><span style='font-size:10.0pt'>here</span></a><span
+style='font-size:10.0pt'> for a diagram of my front panel.<o:p></o:p></span></p>
+
+</div>
+
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1715796;
+var sc_invisible=0;
+var sc_partition=16;
+var sc_security="b13d8e1a";
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c17.statcounter.com/counter.php?sc_project=1715796&amp;java=0&amp;security=b13d8e1a&amp;invisible=0" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code -->
+</body>
+
+</html>
