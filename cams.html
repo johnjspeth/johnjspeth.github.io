@@ -24,7 +24,11 @@
         <TD><A HREF="https://whitepass-cdn.s3.amazonaws.com/webcams/current.jpg"><IMG onmouseover="bigImg(this)" onmouseout="normalImg(this)" SRC="https://whitepass-cdn.s3.amazonaws.com/webcams/current.jpg" WIDTH=60 HEIGHT=50 ALT="White Pass Ski Area" TITLE="White Pass Ski Area"/></A></TD>
         <TD><A HREF="https://whitepass-cdn.s3.amazonaws.com/webcams/highcamp.jpg"><IMG onmouseover="bigImg(this)" onmouseout="normalImg(this)" SRC="https://whitepass-cdn.s3.amazonaws.com/webcams/highcamp.jpg" WIDTH=60 HEIGHT=50 ALT="White Pass Ski Area" TITLE="White Pass Ski Area"/></A></TD>
         <TD><A HREF="https://whitepass-cdn.s3.amazonaws.com/webcams/basin.jpg"><IMG onmouseover="bigImg(this)" onmouseout="normalImg(this)" SRC="https://whitepass-cdn.s3.amazonaws.com/webcams/basin.jpg" WIDTH=60 HEIGHT=50 ALT="White Pass Ski Area" TITLE="White Pass Ski Area"/></A></TD>
-        <TD><A HREF="http://www.stevenspass.com/cams/base1/"><IMG onmouseover="bigImg(this)" onmouseout="normalImg(this)" SRC="http://www.stevenspass.com/cams/base1/" WIDTH=60 HEIGHT=50 ALT="Stevens Pass" TITLE="Stevens Pass"/></A></TD>
+        <script type="text/javascript">
+            document.write('<TD><A HREF="http://www.stevenspass.com/cams/base1/'+ (new Date()).getTime() +'">');
+            document.write('<IMG onmouseover="bigImg(this)" onmouseout="normalImg(this)" SRC="http://www.stevenspass.com/cams/base1/'+ (new Date()).getTime() +'" WIDTH=60 HEIGHT=50 ALT="Stevens Pass" TITLE="Stevens Pass"/>');
+            document.write('</A></TD>');
+        </script>
         <TD><A HREF="http://www.stevenspass.com/Stevens/SiteAssets/_ftp/webcam/stevenspass2.jpg"><IMG onmouseover="bigImg(this)" onmouseout="normalImg(this)" SRC="http://www.stevenspass.com/Stevens/SiteAssets/_ftp/webcam/stevenspass2.jpg" WIDTH=60 HEIGHT=50 ALT="Stevens Pass" TITLE="Stevens Pass"/></A></TD>
         <script type="text/javascript">
             document.write('<TD><A HREF="https://instacam.earthnetworks.com/instacamimg/CRYM7/CRYM7_l.jpg?_ck='+ (new Date()).getTime() +'">');
@@ -210,9 +214,7 @@
       <TR>
         <TD><A>California</A></TD>
         <TD><A HREF="https://www.snowcrest.net/camera/snowcam-high000M.jpg"><IMG onmouseover="bigImg(this)" onmouseout="normalImg(this)" SRC="https://www.snowcrest.net/camera/snowcam-high000M.jpg" WIDTH=60 HEIGHT=50 ALT="Mt Shasta" TITLE="Mt Shasta"/></A></TD>
-        <TD><A HREF="https://www.skipark.com/images/mtncam2.jpg"><IMG onmouseover="bigImg(this)" onmouseout="normalImg(this)" SRC="https://www.skipark.com/images/mtncam2.jpg" WIDTH=60 HEIGHT=50 ALT="Mt Shasta" TITLE="Mt Shasta"/></A></TD>
-        <TD><A HREF="https://www.skipark.com/images/mtncam3.jpg"><IMG onmouseover="bigImg(this)" onmouseout="normalImg(this)" SRC="https://www.skipark.com/images/mtncam3.jpg" WIDTH=60 HEIGHT=50 ALT="Mt Shasta" TITLE="Mt Shasta"/></A></TD>
-        <TD><A HREF="https://www.skipark.com/images/mtncam4.jpg"><IMG onmouseover="bigImg(this)" onmouseout="normalImg(this)" SRC="https://www.skipark.com/images/mtncam4.jpg" WIDTH=60 HEIGHT=50 ALT="Mt Shasta" TITLE="Mt Shasta"/></A></TD>
+        <TD><A HREF="https://www.skipark.com/images/mtncam2.jpg"><IMG onmouseover="bigImg(this)" onmouseout="normalImg(this)" SRC="https://www.skipark.com/images/mtncam2.jpg" WIDTH=60 HEIGHT=50 ALT="Ski Park" TITLE="Ski Park"/></A></TD>
       </TR>
     </TABLE>
   </BODY>
